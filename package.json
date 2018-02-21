@@ -1,0 +1,23 @@
+{
+  "name": "evolution-theory",
+  "version": "1.0.0",
+  "description": "Project to show various stages of an genetic-algorithm",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramonmoraes/evolutionTheory.git"
+  },
+  "keywords": [
+    "genetic",
+    "evolution"
+  ],
+  "author": "Ramon Moraes @github.com/ramonmoraes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ramonmoraes/evolutionTheory/issues"
+  },
+  "homepage": "https://github.com/ramonmoraes/evolutionTheory#readme"
+}
