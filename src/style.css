@@ -1,0 +1,22 @@
+body {
+    font-family: 'Montserrat', serif;
+}
+
+.land {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:50px;
+    color: #121212;
+}
+
+.land h1 {
+    text-align: center;
+}
+
+canvas {
+    border: 1px solid #121212;
+    width: 70vw;
+    min-height: 50vh;
+}
