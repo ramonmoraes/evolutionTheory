@@ -67,7 +67,16 @@
 /* 0 */
 /***/ (function(module, exports) {
 
+const various = {
+    jose:{
+        nome: "jose",
+        sobrenome: "dos campos"
+    }
+}
 
+const { jose } = various;
+
+console.log(jose);
 
 /***/ })
 /******/ ]);
