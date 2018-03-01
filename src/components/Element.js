@@ -12,12 +12,14 @@ export default class Element {
         const {x = this.getRandomX(), y = this.getRandomY(), size = 5} = this.drawOptions;
         this.ctx.beginPath();
         this.ctx.arc(x,y,size,0,2*Math.PI);
+        this.ctx.fill = color;        
         this.ctx.stroke();
     };
 
     drawSquare() {
         const {x = this.getRandomX(), y = this.getRandomY(), size = 5} = this.drawOptions;
         this.ctx.rect(x,y,size,size);
+        this.ctx.fill = color;
         this.ctx.stroke();
     };
 
@@ -28,4 +30,12 @@ export default class Element {
     getRandomY() { 
         return Math.floor((Math.random() * this.canvas.clientHeight) + 1);
     };
+
+    setEnergy(value){
+        this.fullOptions.energy = value;
+    }
+
+    getEnergy(){
+        return this.fullOptions.energy;
+    }
 }
