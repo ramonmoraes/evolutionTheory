@@ -5,5 +5,13 @@ window.onload = () => {
     new Canvas();
 
     // new Element();
-    const crea = new Creature();
+    const crea = new Creature({
+        drawOptions:{
+            // x:50,
+            // y:60
+        },
+        energy: 120,
+    });
+
+    crea.drawCircle();
 }
