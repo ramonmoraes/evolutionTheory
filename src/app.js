@@ -1,3 +1,9 @@
-import Element  from './components/Element.js';
+import Canvas  from './components/Canvas.js';
+import Creature  from './genetic/Creature.js';
 
-new Element();
+window.onload = () => {
+    new Canvas();
+
+    // new Element();
+    const crea = new Creature();
+}

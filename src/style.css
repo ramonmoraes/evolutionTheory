@@ -15,7 +15,7 @@ body {
     text-align: center;
 }
 
-canvas {
+.canvas-wrapper {
     border: 1px solid #121212;
     width: 70vw;
     min-height: 50vh;
