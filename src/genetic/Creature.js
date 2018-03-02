@@ -1,6 +1,6 @@
-import Element  from '../components/Element.js';
+import CanvasElement  from '../components/CanvasElement.js';
 
-export default class Creature extends Element {
+export default class Creature extends CanvasElement {
     constructor(options = {}){
         super(options);
         this.evoOptions = Object.assign({},{
@@ -12,5 +12,9 @@ export default class Creature extends Element {
             tasteLike: 0x00000, //sabor
             tasteRange: 0xa,    //variação de sabores
         }, options.evoOptions);
+    }
+    
+    spawn() {
+        this.drawCircle(this.evoOptions.appearence);
     }
 }
