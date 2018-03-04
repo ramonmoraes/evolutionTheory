@@ -1,5 +1,5 @@
 export default class CanvasElement {
-    constructor(options = {}){
+    constructor(options = {}) {
         this.drawOptions = options.drawOptions || {};
         this.canvas = options.canvas || document.querySelector("#canvas");
         this.posX = this.drawOptions.x || this.getRandomX();
@@ -10,7 +10,7 @@ export default class CanvasElement {
         const ctx = this.canvas.getContext("2d");
         const { size = 5 } = this.drawOptions;
         ctx.beginPath();
-        ctx.arc(this.posX,this.posY,size,0,2*Math.PI);
+        ctx.arc(this.posX, this.posY, size, 0, 2*Math.PI);
         ctx.fillStyle = appearance.fill || "trasparent";
         ctx.strokeStyle = appearance.border || "black";    
         ctx.fill();
@@ -20,7 +20,7 @@ export default class CanvasElement {
     drawSquare(appearance = {}) {
         const ctx = this.canvas.getContext("2d");        
         const { size = 5 } = this.drawOptions;
-        ctx.rect(this.posX,this.posY,size,size);
+        ctx.rect(this.posX, this.posY,size,size);
         ctx.fillStyle = appearance.fill || "trasparent";
         ctx.strokeStyle = appearance.border || "black";   
         ctx.fill();
