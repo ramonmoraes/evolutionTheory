@@ -1,5 +1,3 @@
-import Canvas from './Canvas.js';
-
 export default class CanvasElement {
     constructor(options = {}){
         this.drawOptions = options.drawOptions || {};
@@ -9,30 +7,24 @@ export default class CanvasElement {
     }
     
     drawCircle(appearance = {}) {
-        const frameRate = Canvas.getFramerate();
-        setInterval(()=> {
-            const ctx = this.canvas.getContext("2d");
-            const { size = 5 } = this.drawOptions;
-            ctx.beginPath();
-            ctx.arc(this.posX,this.posY,size,0,2*Math.PI);
-            ctx.fillStyle = appearance.fill || "trasparent";
-            ctx.strokeStyle = appearance.border || "black";    
-            ctx.fill();
-            ctx.stroke();
-        }, frameRate);
+        const ctx = this.canvas.getContext("2d");
+        const { size = 5 } = this.drawOptions;
+        ctx.beginPath();
+        ctx.arc(this.posX,this.posY,size,0,2*Math.PI);
+        ctx.fillStyle = appearance.fill || "trasparent";
+        ctx.strokeStyle = appearance.border || "black";    
+        ctx.fill();
+        ctx.stroke();
     };
 
     drawSquare(appearance = {}) {
-        const frameRate = Canvas.getFramerate();
-        setInterval(()=> {
-            const ctx = this.canvas.getContext("2d");        
-            const { size = 5 } = this.drawOptions;
-            ctx.rect(this.posX,this.posY,size,size);
-            ctx.fillStyle = appearance.fill || "trasparent";
-            ctx.strokeStyle = appearance.border || "black";   
-            ctx.fill();
-            ctx.stroke();
-        }, frameRate);
+        const ctx = this.canvas.getContext("2d");        
+        const { size = 5 } = this.drawOptions;
+        ctx.rect(this.posX,this.posY,size,size);
+        ctx.fillStyle = appearance.fill || "trasparent";
+        ctx.strokeStyle = appearance.border || "black";   
+        ctx.fill();
+        ctx.stroke();
     };
 
     getRandomX() {
@@ -58,4 +50,9 @@ export default class CanvasElement {
     setPosY(newY) {
         this.posY = newY;
     };
+
+    clearCanvas() {
+        const ctx = this.canvas.getContext("2d");    
+        ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
 }

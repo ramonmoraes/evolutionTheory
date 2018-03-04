@@ -22,17 +22,22 @@ export default class Creature extends CanvasElement {
         this.drawSquare(this.options.appearence);
     }
 
-    moveTo(obj = {x : this.posX, y: this.posY}) {
+    moveTo(obj = {x : this.getPosX(), y: this.getPosY()}) {
         let newX, newY;
-
-        if(obj.x > this.posX) newX = this.posX - this.options.evoOptions.moveSpeed;  
-        if(obj.x < this.posX) newX = this.posX + this.options.evoOptions.moveSpeed;
-        if(obj.y > this.posY) newY = this.posY - this.options.evoOptions.moveSpeed;  
-        if(obj.y < this.posY) newY = this.posY + this.options.evoOptions.moveSpeed;  
-
-        if (this.posX !== obj.x) this.setPosX(newX);
-        if (this.posY !== obj.y) this.setPosY(newY);
-        
+        if (obj.x > this.getPosX()) newX = this.getPosX() + this.options.evoOptions.moveSpeed;  
+        if (obj.x < this.getPosX()) newX = this.getPosX() - this.options.evoOptions.moveSpeed;
+        if (obj.y > this.getPosY()) newY = this.getPosY() + this.options.evoOptions.moveSpeed;  
+        if (obj.y < this.getPosY()) newY = this.getPosY() - this.options.evoOptions.moveSpeed;            
+        if (this.getPosX() !== obj.x) this.setPosX(newX);
+        if (this.getPosY() !== obj.y) this.setPosY(newY);
         this.spawn();
+    }
+
+    action() {
+        // console.log(this);
+        this.moveTo({
+            x:15,
+            y:25,
+        })
     }
 }

@@ -1,37 +1,46 @@
 import Creature  from './Creature.js';
 import Fruit from './Fruit.js';
+import Canvas from '../components/Canvas';
 
 export default class Population {
     constructor(options = {}) {
-        this.options = Object.assign({
+        this.options = Object.assign({},{
             pool: 100,
             elements : []
         }, options);
-        this.spawnPopulation();
+
+        this.startPopulation();
     }
+
+    startPopulation() {
+        this.spawnPopulation();
+        this.takePopulationAction();
+    }
+
     spawnPopulation() {
-        // for (let i = 0; i < this.options.pool; i++) {
-        //     this.options.elements[i] = new Creature();
-        //     this.options.elements[i].spawn();
-
-        //     if (i%2 == 0) {
-        //         let fruit = new Fruit();
-        //         fruit.spawn();
-        //     }
-        // }
-
-        let creature = new Creature({
-            drawOptions: {
-                size: 50
+        for (let i = 0; i < this.options.pool; i++) {
+            if (i === 0) {
+                this.options.elements[i] = new Creature({
+                 drawOptions: {
+                     size: 50
+                 }   
+                });
+                this.options.elements[i].spawn();
+            } else if (i%2 === 0) {
+                this.options.elements[i] = new Fruit();
+                this.options.elements[i].spawn();
             }
-        });
-        creature.spawn();
-        creature.moveTo({x:0, y:15});
+        }
+    }
 
-        let fruits = [];
-         for (let i = 0; i < 10; i++) {
-            fruits[i] = new Fruit();
-            fruits[i].spawn();
-         }
+    takePopulationAction() {
+        setInterval(()=> {
+            this.options.elements.forEach((element, count)=> {
+                if (count === 0){
+                    element.clearCanvas();
+                }
+                element.action();
+            });
+        },1000)
     }
 }

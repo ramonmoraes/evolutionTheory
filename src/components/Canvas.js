@@ -1,12 +1,8 @@
 export default class Canvas {
-    static getFramerate() {
-        const frames = 15;
-        return (1/frames)*1000;
-    } 
-   
-    constructor(options = {}) {
+  constructor(options = {}) {
         this.setUpCanvas();
         this.initDrawning();
+        
     }
     
     setUpCanvas() {
@@ -18,12 +14,12 @@ export default class Canvas {
         this.canvas.width=wrapper.clientWidth;
         wrapper.appendChild(this.canvas);
     }
-
+    
     clearCanvas() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
     initDrawning() {
-        setTimeout(this.clearCanvas(), 1000);
+        setInterval(this.clearCanvas(), 100);
     }
 }

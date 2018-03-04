@@ -18,4 +18,8 @@ export default class Fruit extends CanvasElement {
     spawn() {
         this.drawCircle(this.options.appearence);
     }
+
+    action() {
+        this.spawn();
+    }
 }

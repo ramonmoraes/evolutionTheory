@@ -18,5 +18,12 @@ body {
 .canvas-wrapper {
     border: 1px solid #121212;
     width: 70vw;
-    min-height: 50vh;
+    min-height: 70vh;
+}
+
+@media  screen and ( max-width: 800px ){
+    .canvas-wrapper{
+        width: 99vw;
+    }
+
 }
