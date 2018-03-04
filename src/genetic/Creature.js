@@ -14,6 +14,9 @@ export default class Creature extends CanvasElement {
                 tasteBase: 0x888888, //base do sabor que come
                 tasteRange: 0x00000a, //variação de sabores
                 moveSpeed: 0.25,
+                metabolism: 3,
+                energy: 1000,
+                energyMax: 1000,
             }
         });
     }
@@ -34,10 +37,25 @@ export default class Creature extends CanvasElement {
     }
 
     action() {
-        // console.log(this);
-        this.moveTo({
-            x:15,
-            y:25,
-        })
+        if (this.options.evoOptions.energy > 0) {
+            this.payEnergyCost();
+            this.moveTo({
+                x:15,
+                y:25,
+            });
+        } else {
+            this.spawn();
+        }
+        
+    }
+
+    payEnergyCost() {
+        const { evoOptions } = this.options;
+        evoOptions.energy = evoOptions.energy - evoOptions.metabolism;
+        this.setEnergyLevel(evoOptions.energy);
+    }
+    
+    setEnergyLevel(energy) {
+        this.options.evoOptions.energy = energy;
     }
 }
