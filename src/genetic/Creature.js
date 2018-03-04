@@ -13,7 +13,7 @@ export default class Creature extends CanvasElement {
                 taste : 0xffffff,  //sabor
                 tasteBase: 0x888888, //base do sabor que come
                 tasteRange: 0x00000a, //variação de sabores
-                moveSpeed: 1,
+                moveSpeed: 0.25,
             }
         });
     }

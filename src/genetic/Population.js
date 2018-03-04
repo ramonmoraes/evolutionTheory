@@ -34,6 +34,8 @@ export default class Population {
     }
 
     takePopulationAction() {
+        const actions = 50;
+        const actionsPerMin = 1000/actions;
         setInterval(()=> {
             this.options.elements.forEach((element, count)=> {
                 if (count === 0){
@@ -41,6 +43,6 @@ export default class Population {
                 }
                 element.action();
             });
-        },1000)
+        }, actionsPerMin)
     }
 }
