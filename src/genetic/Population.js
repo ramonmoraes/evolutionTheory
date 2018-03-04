@@ -7,9 +7,9 @@ export default class Population {
             pool: 100,
             elements : []
         }, options);
-        this.createPopulation();
+        this.spawnPopulation();
     }
-    createPopulation() {
+    spawnPopulation() {
         // for (let i = 0; i < this.options.pool; i++) {
         //     this.options.elements[i] = new Creature();
         //     this.options.elements[i].spawn();
@@ -19,6 +19,7 @@ export default class Population {
         //         fruit.spawn();
         //     }
         // }
+
         let creature = new Creature({
             drawOptions: {
                 size: 50

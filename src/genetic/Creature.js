@@ -1,4 +1,5 @@
 import CanvasElement  from '../components/CanvasElement.js';
+import Behavior  from '../behavior/Behavior.js';
 
 export default class Creature extends CanvasElement {
     constructor(options = {}) {
