@@ -4,19 +4,20 @@ import Behavior  from '../behavior/Behavior.js';
 export default class Creature extends CanvasElement {
     constructor(options = {}) {
         super(options);
-        this.evoOptions = Object.assign({}, {
+        this.options = Object.assign(options, {
             appearence: {
                 border: '#111',
                 fill: 'transparent',
-                size: 10,
             },
-            taste : 0xffffff,  //sabor
-            tasteBase: 0x888888, //base do sabor que come
-            tasteRange: 0x00000a, //variação de sabores
-        }, options.evoOptions);
+            evoOptions: {
+                taste : 0xffffff,  //sabor
+                tasteBase: 0x888888, //base do sabor que come
+                tasteRange: 0x00000a, //variação de sabores
+            }
+        });
     }
 
     spawn() {
-        this.drawCircle(this.evoOptions.appearence);
+        this.drawCircle(this.options.appearence);
     }
 }
