@@ -1,8 +1,8 @@
 export default class Canvas {
   constructor(options = {}) {
         this.setUpCanvas();
-        this.initDrawning();
-        
+        console.log(this);
+        // this.initDrawning();
     }
     
     setUpCanvas() {
@@ -16,7 +16,7 @@ export default class Canvas {
     }
     
     clearCanvas() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     }
 
     initDrawning() {
