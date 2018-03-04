@@ -16,6 +16,6 @@ export default class Fruit extends CanvasElement {
     }
     
     spawn() {
-        this.drawSquare(this.options.appearence);
+        this.drawCircle(this.options.appearence);
     }
 }

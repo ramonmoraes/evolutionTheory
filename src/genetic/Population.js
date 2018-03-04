@@ -26,6 +26,7 @@ export default class Population {
             }
         });
         creature.spawn();
+        creature.moveTo({x:0, y:15});
 
         let fruits = [];
          for (let i = 0; i < 10; i++) {
