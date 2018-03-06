@@ -1,14 +1,13 @@
 export default class CanvasElement {
     constructor(options = {}) {
-        const canvas = options.canvas || document.querySelector("#canvas");
+        const canvas = options.canvas || document.querySelector('#canvas');
         this.drawOptions = Object.assign({
             posX : 0,
             posY : 0,
             ctx: canvas.getContext('2d'),
             canvas: canvas,
             size: 5,
-        }, options);
-
+        }, options.drawOptions);
         this.setPosX(this.getRandomX());
         this.setPosY(this.getRandomY());
     }
@@ -17,8 +16,9 @@ export default class CanvasElement {
         const { size, ctx, posX, posY } = this.drawOptions;
         ctx.beginPath();
         ctx.arc(posX, posY, size, 0, 2*Math.PI);
-        ctx.fillStyle = appearance.fill || "trasparent";
-        ctx.strokeStyle = appearance.border || "black";    
+        ctx.fillStyle = appearance.fill || 'trasparent';
+        ctx.strokeStyle = appearance.border || 'black';    
+        ctx.setLineDash([0,0]);
         ctx.fill();
         ctx.stroke();
     };
@@ -26,11 +26,24 @@ export default class CanvasElement {
     drawSquare(appearance = {}) {
         const { size, ctx, posX, posY  } = this.drawOptions;
         ctx.rect(posX, posY, size, size);
-        ctx.fillStyle = appearance.fill || "trasparent";
-        ctx.strokeStyle = appearance.border || "black";   
+        ctx.fillStyle = appearance.fill || 'trasparent';
+        ctx.strokeStyle = appearance.border || 'black';  
+        ctx.setLineDash([0,0]);
         ctx.fill();
         ctx.stroke();
     };
+
+    createCircle(createOptions = {}) {
+        const { size, posX, posY, ctx  } = createOptions;
+        ctx.beginPath();
+        ctx.arc(posX, posY, size, 0, 2*Math.PI);
+        ctx.fillStyle = createOptions.fill || 'trasparent';
+        ctx.strokeStyle = createOptions.border || 'black';    
+        ctx.setLineDash([5, 3]);
+        ctx.fill();
+        ctx.stroke();
+        console.log(ctx)
+    }
 
     getRandomX() {
         return Math.floor((Math.random() * this.getCanvas().clientWidth - 1) + 1);

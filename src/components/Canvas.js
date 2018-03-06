@@ -1,7 +1,6 @@
 export default class Canvas {
   constructor(options = {}) {
         this.setUpCanvas();
-        console.log(this);
         // this.initDrawning();
     }
     

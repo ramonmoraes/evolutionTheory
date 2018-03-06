@@ -21,10 +21,10 @@ export default class Population {
         for (let i = 0; i < this.options.pool; i++) {
             if (i === 0) {
                 this.options.elements[i] = new SimpleCreature({
-                    drawOptions:{
-                        size: 50
-                    }
-                });
+                        drawOptions: {
+                            size: 50
+                        }
+                    });
                 this.options.elements[i].spawn();
             } else if (i%2 === 0) {
                 this.options.elements[i] = new Fruit();
@@ -35,7 +35,7 @@ export default class Population {
 
     takePopulationAction() {
         const actions = 50;
-        const actionsPerMin = 1000/actions;
+        const actionsPerSeg = 1000/actions;
 
         setInterval(()=> {
             this.options.elements.forEach((element, count)=> {
@@ -44,6 +44,6 @@ export default class Population {
                 }
                 element.action();
             });
-        }, actionsPerMin)
+        }, actionsPerSeg)
     }
 }
