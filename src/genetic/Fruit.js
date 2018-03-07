@@ -12,7 +12,6 @@ export default class Fruit extends CanvasElement {
                 energy: 100,
                 taste : 0x888888,  //sabor
         };
-        console.log(this)
     }
     
     spawn() {

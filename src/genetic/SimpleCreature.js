@@ -24,7 +24,7 @@ export default class SimpleCreature extends CanvasElement {
         this.actions = [];
     }
 
-    spawn(options) {
+    spawn() {
         const drawOptions = Object.assign(this.appearence, this.drawOptions);
         this.drawSquare(drawOptions);
     }
@@ -67,12 +67,15 @@ export default class SimpleCreature extends CanvasElement {
     }
 
     createVisionRange() {
-        const { size, posX, posY, ctx} = this.drawOptions;
-        this.drawCircle({
+        const { size, posX, posY } = this.drawOptions;
+        const render = new CanvasRender();
+
+        const options = {
             size: size + this.evoOptions.vision,
             posX: posX + size/2,
             posY: posY + size/2,
-            ctx: ctx,
-        });
+        };
+
+        this.drawCircle(options);
     }
 }
