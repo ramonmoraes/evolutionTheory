@@ -1,7 +1,6 @@
 export default class Canvas {
   constructor(options = {}) {
         this.setUpCanvas();
-        // this.initDrawning();
     }
     
     setUpCanvas() {
@@ -9,8 +8,8 @@ export default class Canvas {
         this.canvas = document.createElement('canvas');
         this.ctx = this.canvas.getContext("2d");
         this.canvas.id = 'canvas';
-        this.canvas.height=wrapper.clientHeight;
-        this.canvas.width=wrapper.clientWidth;
+        this.canvas.height = wrapper.clientHeight;
+        this.canvas.width = wrapper.clientWidth;
         wrapper.appendChild(this.canvas);
     }
     

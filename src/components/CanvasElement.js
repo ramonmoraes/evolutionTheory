@@ -1,56 +1,24 @@
+import CanvasRender from './CanvasRender.js';
+
 export default class CanvasElement {
     constructor(options = {}) {
-        const canvas = options.canvas || document.querySelector('#canvas');
         this.drawOptions = Object.assign({
             posX : 0,
             posY : 0,
-            ctx: canvas.getContext('2d'),
-            canvas: canvas,
             size: 5,
         }, options.drawOptions);
+        
+        this.render = new CanvasRender();
         this.setPosX(this.getRandomX());
         this.setPosY(this.getRandomY());
     }
-    
-    drawCircle(appearance = {}) {
-        const { size, ctx, posX, posY } = this.drawOptions;
-        ctx.beginPath();
-        ctx.arc(posX, posY, size, 0, 2*Math.PI);
-        ctx.fillStyle = appearance.fill || 'trasparent';
-        ctx.strokeStyle = appearance.border || 'black';    
-        ctx.setLineDash([0,0]);
-        ctx.fill();
-        ctx.stroke();
-    };
-
-    drawSquare(appearance = {}) {
-        const { size, ctx, posX, posY  } = this.drawOptions;
-        ctx.rect(posX, posY, size, size);
-        ctx.fillStyle = appearance.fill || 'trasparent';
-        ctx.strokeStyle = appearance.border || 'black';  
-        ctx.setLineDash([0,0]);
-        ctx.fill();
-        ctx.stroke();
-    };
-
-    createCircle(createOptions = {}) {
-        const { size, posX, posY, ctx  } = createOptions;
-        ctx.beginPath();
-        ctx.arc(posX, posY, size, 0, 2*Math.PI);
-        ctx.fillStyle = createOptions.fill || 'trasparent';
-        ctx.strokeStyle = createOptions.border || 'black';    
-        ctx.setLineDash([5, 3]);
-        ctx.fill();
-        ctx.stroke();
-        console.log(ctx)
-    }
 
     getRandomX() {
-        return Math.floor((Math.random() * this.getCanvas().clientWidth - 1) + 1);
+        return Math.floor((Math.random() * this.render.getCanvas().clientWidth - 1) + 1);
     };
 
     getRandomY() { 
-        return Math.floor((Math.random() * this.getCanvas().clientHeight - 1) + 1);
+        return Math.floor((Math.random() * this.render.getCanvas().clientHeight - 1) + 1);
     };
 
     getPosX() {
@@ -68,12 +36,20 @@ export default class CanvasElement {
     setPosY(newY) {
         this.drawOptions.posY = newY;
     };
-    getCanvas(){
-        return this.drawOptions.canvas;
+
+    getCanvas() {
+        return this.getCanvas();
+    }
+
+    drawCircle(options = {}) {
+        this.render.drawCircle(options);
+    }
+
+    drawSquare(options = {}) {
+        this.render.drawSquare(options);
     }
 
     clearCanvas() {
-        this.drawOptions.ctx.clearRect(0, 0, this.drawOptions.canvas.width, this.drawOptions.canvas.height);
+        this.render.clearCanvas();
     }
-
 }

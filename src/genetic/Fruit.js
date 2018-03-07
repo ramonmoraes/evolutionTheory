@@ -7,14 +7,17 @@ export default class Fruit extends CanvasElement {
             border: 'black',
             fill: 'red'
         };
+
         this.evoOptions =  {
                 energy: 100,
                 taste : 0x888888,  //sabor
         };
+        console.log(this)
     }
     
     spawn() {
-        this.drawCircle(this.appearence);
+        const drawOptions = Object.assign(this.appearence,this.drawOptions);
+        this.drawCircle(drawOptions);
     }
 
     action() {
