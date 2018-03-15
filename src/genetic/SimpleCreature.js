@@ -14,13 +14,13 @@ export default class SimpleCreature extends CanvasElement {
             taste : 0xffffff,  //sabor
             tasteBase: 0x888888, //base do sabor que come
             tasteRange: 0x00000a, //variação de sabores
-            moveSpeed: 0.25,
+            moveSpeed: 0.45,
             metabolism: 3, // energia gasta por "turno"
             energy: 2000,
             energyMax: 1000,
             vision: 20,
         };
-        
+        console.log(this);
         this.actions = [];
     }
 
@@ -78,4 +78,14 @@ export default class SimpleCreature extends CanvasElement {
 
         this.drawCircle(options);
     }
+
+    checkRangeVision(obj = {}) {
+        if (obj.drawOptions) {
+            let difX = this.drawOptions.posX - obj.drawOptions.posX;
+            let difY = this.drawOptions.posY - obj.drawOptions.posY;
+            return (Math.sqrt(difX*difX + difY*difY) < this.evoOptions.vision); 
+        }
+            console.warn("Obj has no drawOptions , Obj :" + obj);
+            return undefined;
+        };
 }
